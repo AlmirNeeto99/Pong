@@ -13,6 +13,7 @@ void Paddle::update() {}
 
 void Paddle::draw()
 {
+    glColor3f((float)133 / 255, (float)51 / 255, 255);
     glBegin(GL_QUADS);
     glVertex2i(this->x, this->y);
     glVertex2i(this->x + this->width, this->y);
