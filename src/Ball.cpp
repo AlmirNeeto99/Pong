@@ -1,4 +1,4 @@
-#include "headers/ball.hpp"
+#include "headers/Ball.hpp"
 #include "GL/gl.h"
 
 Ball::Ball() {}
