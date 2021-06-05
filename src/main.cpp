@@ -2,6 +2,7 @@
 #include "GL/glu.h"
 #include "GLFW/glfw3.h"
 #include "headers/Ball.hpp"
+#include "headers/Paddle.hpp"
 // #include "glm/glm.hpp"
 // #include <glm/gtc/matrix_transform.hpp>
 // #include <glm/gtc/type_ptr.hpp>
@@ -56,15 +57,22 @@ int main(int argc, char const *argv[])
     glfwSetFramebufferSizeCallback(window, resize_key);
     /* Callbacks */
 
-    Ball ball = Ball();
+    Ball ball = Ball(500, 300, 10);
+    Paddle paddleLeft = Paddle(30, 200);
+    Paddle paddleRight = Paddle(950, 200);
     while (!glfwWindowShouldClose(window))
     {
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+        /*Update*/
         ball.update();
+        paddleLeft.update();
+        paddleRight.update();
+        /*Update*/
+        /*Drawing*/
         ball.draw();
-
+        paddleLeft.draw();
+        paddleRight.draw();
+        /*Drawing*/
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
