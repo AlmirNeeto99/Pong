@@ -1,7 +1,7 @@
 #include "GL/gl.h"
 #include "GL/glu.h"
 #include "GLFW/glfw3.h"
-#include "headers/ball.hpp"
+#include "headers/Ball.hpp"
 // #include "glm/glm.hpp"
 // #include <glm/gtc/matrix_transform.hpp>
 // #include <glm/gtc/type_ptr.hpp>
