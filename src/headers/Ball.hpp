@@ -4,10 +4,8 @@
 class Ball
 {
 public:
-    int x;
-    int y;
-    Ball();
-    Ball(int x, int y);
+    int x, y, radius;
+    Ball(int x, int y, int radius);
     ~Ball();
     void move(int x, int y);
     void update();
