@@ -1,7 +1,9 @@
 #ifndef PADDLE_H
 #define PADDLE_H
+#include "listeners/KeyListener.hpp"
 
 class Paddle
+    : public KeyListener
 {
 public:
     int x, y;
