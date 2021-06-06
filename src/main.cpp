@@ -3,6 +3,7 @@
 #include "GLFW/glfw3.h"
 #include "headers/Ball.hpp"
 #include "headers/Paddle.hpp"
+#include "headers/events/KeyEvent.hpp"
 // #include "glm/glm.hpp"
 // #include <glm/gtc/matrix_transform.hpp>
 // #include <glm/gtc/type_ptr.hpp>
@@ -14,6 +15,10 @@ void handle_key(GLFWwindow *window, int key, int scancode, int action, int mode)
     if (key == GLFW_KEY_ESCAPE)
     {
         glfwSetWindowShouldClose(window, GLFW_TRUE);
+    }
+    else
+    {
+        KeyEvent::setEvent(key, scancode, action, mode);
     }
 }
 
@@ -28,11 +33,6 @@ void configureView(int width, int heigth)
 
     glClearColor(.0f, .0f, .0f, .0f);
     glEnable(GL_DEPTH_TEST);
-}
-
-void resize_key(GLFWwindow *window, int width, int heigth)
-{
-    configureView(width, heigth);
 }
 
 int main(int argc, char const *argv[])
@@ -54,7 +54,6 @@ int main(int argc, char const *argv[])
     configureView(1000, 600);
     /* Callbacks */
     glfwSetKeyCallback(window, handle_key);
-    glfwSetFramebufferSizeCallback(window, resize_key);
     /* Callbacks */
 
     Ball ball = Ball(500, 300, 10);
