@@ -1,5 +1,4 @@
 #include "GL/gl.h"
-#include "GL/glu.h"
 #include "GLFW/glfw3.h"
 #include "headers/Ball.hpp"
 #include "headers/Paddle.hpp"
