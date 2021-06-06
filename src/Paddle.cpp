@@ -9,7 +9,27 @@ Paddle::Paddle(int x, int y)
 
 Paddle::~Paddle() {}
 
-void Paddle::update() {}
+void Paddle::update()
+{
+    if (this->keyPressed('W'))
+    {
+        this->y -= 5;
+        /* If reaches the top, stop */
+        if (this->y < 0)
+        {
+            this->y = 0;
+        }
+    }
+    else if (this->keyPressed('S'))
+    {
+        this->y += 5;
+        /* If reaches the bottom, stop */
+        if (this->y > 600 - this->height)
+        {
+            this->y = 600 - this->height;
+        }
+    }
+}
 
 void Paddle::draw()
 {
