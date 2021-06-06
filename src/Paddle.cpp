@@ -11,7 +11,7 @@ Paddle::~Paddle() {}
 
 void Paddle::update()
 {
-    if (this->keyPressed('W'))
+    if (this->keyPressed(Key::W))
     {
         this->y -= 5;
         /* If reaches the top, stop */
@@ -20,7 +20,7 @@ void Paddle::update()
             this->y = 0;
         }
     }
-    else if (this->keyPressed('S'))
+    else if (this->keyPressed(Key::S))
     {
         this->y += 5;
         /* If reaches the bottom, stop */
