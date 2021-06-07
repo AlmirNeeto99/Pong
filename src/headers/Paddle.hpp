@@ -11,6 +11,7 @@ public:
     ~Paddle();
     void update();
     void draw();
+    void checkWindowCollision();
 
 private:
     const int width = 15;

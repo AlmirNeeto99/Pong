@@ -9,7 +9,7 @@ Paddle::Paddle(int x, int y)
 
 Paddle::~Paddle() {}
 
-void Paddle::update()
+void Paddle::checkWindowCollision()
 {
     if (this->keyPressed(Key::W))
     {
@@ -29,6 +29,11 @@ void Paddle::update()
             this->y = 600 - this->height;
         }
     }
+}
+
+void Paddle::update()
+{
+    this->checkWindowCollision();
 }
 
 void Paddle::draw()
