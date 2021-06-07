@@ -1,12 +1,17 @@
 #include "headers/Ball.hpp"
 #include "GL/gl.h"
 #include <cmath>
+#include <ctime>
 
 Ball::Ball(int x, int y, int radius)
 {
     this->x = x;
     this->y = y;
     this->radius = radius;
+    srand(time(0));
+    int direction = rand() % 360;
+    this->vx = this->radius * cos(direction);
+    this->vy = this->radius * sin(direction);
 }
 
 Ball::~Ball() {}
@@ -15,13 +20,17 @@ void Ball::move(int x, int y) {}
 
 void Ball::update()
 {
-    this->x += 5;
-    this->y += 5;
-    if (this->x >= 1000 - this->radius)
-        this->x = 0 + this->radius;
-
-    if (this->y >= 600 - this->radius)
-        this->y = 0 + this->radius;
+    int nextX = this->x + vx, nextY = this->y + vy;
+    if (nextY >= 600 - this->radius || nextY <= 0 + this->radius)
+    {
+        this->vy *= -1;
+    }
+    if (nextX >= 1000 - this->radius || nextX <= 0 + this->radius)
+    {
+        this->vx *= -1;
+    }
+    this->x += vx;
+    this->y += vy;
 }
 
 void Ball::draw()
