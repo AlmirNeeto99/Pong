@@ -1,7 +1,4 @@
 #include "headers/Ball.hpp"
-#include "GL/gl.h"
-#include <cmath>
-#include <ctime>
 
 Ball::Ball(int x, int y, int radius)
 {
@@ -16,7 +13,7 @@ Ball::Ball(int x, int y, int radius)
 
 Ball::~Ball() {}
 
-void Ball::checkCollision()
+void Ball::checkCollidedLimits()
 {
     int nextX = this->x + vx, nextY = this->y + vy;
     if (nextY >= 600 - this->radius || nextY <= 0 + this->radius)
@@ -27,13 +24,20 @@ void Ball::checkCollision()
     {
         this->vx *= -1;
     }
-    this->x += vx;
-    this->y += vy;
 }
+
+void Ball::checkCollisions()
+{
+    this->checkCollidedLimits();
+}
+
+void Ball::changeDirection() {}
 
 void Ball::update()
 {
-    this->checkCollision();
+    this->checkCollisions();
+    this->x += vx;
+    this->y += vy;
 }
 
 void Ball::draw()
