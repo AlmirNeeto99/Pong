@@ -4,7 +4,7 @@
 class Ball
 {
 public:
-    int x, y, radius;
+    int x, y, radius, vx, vy;
     Ball(int x, int y, int radius);
     ~Ball();
     void move(int x, int y);
