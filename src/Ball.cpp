@@ -16,8 +16,6 @@ Ball::Ball(int x, int y, int radius)
 
 Ball::~Ball() {}
 
-void Ball::move(int x, int y) {}
-
 void Ball::update()
 {
     int nextX = this->x + vx, nextY = this->y + vy;
