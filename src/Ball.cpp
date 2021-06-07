@@ -16,7 +16,7 @@ Ball::Ball(int x, int y, int radius)
 
 Ball::~Ball() {}
 
-void Ball::update()
+void Ball::checkCollision()
 {
     int nextX = this->x + vx, nextY = this->y + vy;
     if (nextY >= 600 - this->radius || nextY <= 0 + this->radius)
@@ -29,6 +29,11 @@ void Ball::update()
     }
     this->x += vx;
     this->y += vy;
+}
+
+void Ball::update()
+{
+    this->checkCollision();
 }
 
 void Ball::draw()
