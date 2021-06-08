@@ -31,7 +31,19 @@ void Ball::checkCollisions()
     this->checkCollidedLimits();
 }
 
-void Ball::changeDirection() {}
+void Ball::changeDirection()
+{
+    this->vx *= -1;
+}
+
+void Ball::collidedPaddle(Paddle *paddle)
+{
+    int nextX = this->x + this->vx, nextY = this->y + this->vy;
+    if (nextX >= paddle->x && nextX <= paddle->x + 20 && nextY >= paddle->y && nextY <= paddle->y + 150)
+    {
+        this->changeDirection();
+    }
+}
 
 void Ball::update()
 {
