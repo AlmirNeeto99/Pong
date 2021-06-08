@@ -65,6 +65,8 @@ int main(int argc, char const *argv[])
         ball.update();
         paddleLeft.update();
         paddleRight.update();
+        ball.collidedPaddle(&paddleLeft);
+        ball.collidedPaddle(&paddleRight);
         /*Update*/
         /*Drawing*/
         ball.draw();
