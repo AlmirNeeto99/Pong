@@ -1,4 +1,5 @@
 #include "headers/Ball.hpp"
+#include <iostream>
 
 Ball::Ball(int x, int y, int radius)
 {
@@ -23,6 +24,14 @@ void Ball::checkCollidedLimits()
     if (nextX >= 1000 - this->radius || nextX <= 0 + this->radius)
     {
         this->vx *= -1;
+        if (nextX >= 1000 - this->radius)
+        {
+            std::cout << "Player 1 goal" << std::endl;
+        }
+        else if (nextX <= 0 + this->radius)
+        {
+            std::cout << "Player 2 goal" << std::endl;
+        }
     }
 }
 
@@ -39,7 +48,7 @@ void Ball::changeDirection()
 void Ball::collidedPaddle(Paddle *paddle)
 {
     int nextX = this->x + this->vx, nextY = this->y + this->vy;
-    if (nextX >= paddle->x && nextX <= paddle->x + 20 && nextY >= paddle->y && nextY <= paddle->y + 150)
+    if (nextX >= paddle->x && nextX <= paddle->x + paddle->width && nextY >= paddle->y && nextY <= paddle->y + paddle->height)
     {
         this->changeDirection();
     }
