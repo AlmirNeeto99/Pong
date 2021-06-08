@@ -7,15 +7,13 @@ class Paddle
 {
 public:
     int x, y;
+    const int width = 15;
+    const int height = 150;
     Paddle(int x, int y);
     ~Paddle();
     void update();
     void draw();
     void checkWindowCollision();
-
-private:
-    const int width = 15;
-    const int height = 150;
 };
 
 #endif
