@@ -4,6 +4,7 @@
 #include "GL/gl.h"
 #include <cmath>
 #include <ctime>
+#include "Paddle.hpp"
 
 class Ball
 {
@@ -15,6 +16,7 @@ public:
     void draw();
     void checkCollidedLimits();
     void changeDirection();
+    void collidedPaddle(Paddle *paddle);
 
 private:
     void checkCollisions();
