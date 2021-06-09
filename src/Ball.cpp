@@ -48,7 +48,7 @@ void Ball::changeDirection()
 void Ball::collidedPaddle(Paddle *paddle)
 {
     int nextX = this->x + this->vx, nextY = this->y + this->vy;
-    if (nextX >= paddle->x && nextX <= paddle->x + paddle->width && nextY >= paddle->y && nextY <= paddle->y + paddle->height)
+    if (nextX >= paddle->x - this->radius && nextX <= paddle->x + paddle->width + this->radius && nextY >= paddle->y && nextY <= paddle->y + paddle->height)
     {
         this->changeDirection();
     }
