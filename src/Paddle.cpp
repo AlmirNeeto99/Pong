@@ -9,22 +9,18 @@ Paddle::Paddle(int x, int y)
 
 Paddle::~Paddle() {}
 
-bool Paddle::checkWindowCollision()
+int Paddle::checkWindowCollision()
 {
-    if (this->keyPressed(Key::W))
+    if (this->y < 0)
     {
-        if (this->y < 0)
-        {
-            return this->TOP;
-        }
+        return this->TOP;
     }
-    else if (this->keyPressed(Key::S))
+
+    if (this->y > 600 - this->height)
     {
-        if (this->y > 600 - this->height)
-        {
-            return this->BOTTOM;
-        }
+        return this->BOTTOM;
     }
+
     return 0;
 }
 

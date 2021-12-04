@@ -16,7 +16,7 @@ public:
 
 private:
     void move();
-    bool checkWindowCollision();
+    int checkWindowCollision();
     const int TOP = -1;
     const int BOTTOM = 1;
 };
