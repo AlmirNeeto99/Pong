@@ -61,18 +61,18 @@ int main(int argc, char const *argv[])
     while (!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        /*Update*/
+        /* \/ Update \/ */
         ball.update();
         paddleLeft.update();
         paddleRight.update();
         ball.collidedPaddle(&paddleLeft);
         ball.collidedPaddle(&paddleRight);
-        /*Update*/
-        /*Drawing*/
+        /* /\ Update /\ */
+        /* \/ Drawing \/ */
         ball.draw();
         paddleLeft.draw();
         paddleRight.draw();
-        /*Drawing*/
+        /* /\ Drawing /\ */
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
