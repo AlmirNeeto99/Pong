@@ -1,4 +1,5 @@
 #include "headers/Ball.hpp"
+#include "headers/Window.hpp"
 #include <iostream>
 
 Ball::Ball(int x, int y, int radius)
@@ -6,10 +7,7 @@ Ball::Ball(int x, int y, int radius)
     this->x = x;
     this->y = y;
     this->radius = radius;
-    srand(time(0));
-    int direction = rand() % 360;
-    this->vx = this->radius * cos(direction);
-    this->vy = this->radius * sin(direction);
+    this->calculateDirection();
 }
 
 Ball::~Ball() {}
@@ -17,20 +15,22 @@ Ball::~Ball() {}
 void Ball::checkCollidedLimits()
 {
     int nextX = this->x + vx, nextY = this->y + vy;
-    if (nextY >= 600 - this->radius || nextY <= 0 + this->radius)
+    if (nextY >= Window::HEIGHT - this->radius || nextY <= 0 + this->radius)
     {
         this->vy *= -1;
     }
-    if (nextX >= 1000 - this->radius || nextX <= 0 + this->radius)
+    if (nextX >= Window::WIDTH - this->radius || nextX <= 0 + this->radius)
     {
         this->vx *= -1;
-        if (nextX >= 1000 - this->radius)
+        if (nextX >= Window::WIDTH - this->radius)
         {
             std::cout << "Player 1 goal" << std::endl;
+            this->center();
         }
         else if (nextX <= 0 + this->radius)
         {
             std::cout << "Player 2 goal" << std::endl;
+            this->center();
         }
     }
 }
@@ -69,4 +69,19 @@ void Ball::draw()
         glVertex2i(this->x + (this->radius * cos(deg)), this->y + (this->radius * sin(deg)));
 
     glEnd();
+}
+
+void Ball::calculateDirection()
+{
+    srand(time(0));
+    int direction = rand() % 360;
+    this->vx = this->radius * cos(direction);
+    this->vy = this->radius * sin(direction);
+}
+
+void Ball::center()
+{
+    this->x = Window::WIDTH / 2;
+    this->y = Window::HEIGHT / 2;
+    this->calculateDirection();
 }

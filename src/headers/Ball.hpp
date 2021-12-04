@@ -20,6 +20,8 @@ public:
 
 private:
     void checkCollisions();
+    void center();
+    void calculateDirection();
 };
 
 #endif
