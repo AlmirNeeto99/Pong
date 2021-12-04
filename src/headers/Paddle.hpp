@@ -13,7 +13,12 @@ public:
     ~Paddle();
     void update();
     void draw();
-    void checkWindowCollision();
+
+private:
+    void move();
+    bool checkWindowCollision();
+    const int TOP = -1;
+    const int BOTTOM = 1;
 };
 
 #endif
