@@ -9,31 +9,49 @@ Paddle::Paddle(int x, int y)
 
 Paddle::~Paddle() {}
 
-void Paddle::checkWindowCollision()
+bool Paddle::checkWindowCollision()
 {
     if (this->keyPressed(Key::W))
     {
-        this->y -= 5;
-        /* If reaches the top, stop */
         if (this->y < 0)
         {
-            this->y = 0;
+            return this->TOP;
         }
     }
     else if (this->keyPressed(Key::S))
     {
-        this->y += 5;
-        /* If reaches the bottom, stop */
         if (this->y > 600 - this->height)
         {
-            this->y = 600 - this->height;
+            return this->BOTTOM;
         }
+    }
+    return 0;
+}
+
+void Paddle::move()
+{
+    if (this->keyPressed(Key::W))
+    {
+        this->y -= 5;
+    }
+    else if (this->keyPressed(Key::S))
+    {
+        this->y += 5;
     }
 }
 
 void Paddle::update()
 {
-    this->checkWindowCollision();
+    this->move();
+    int whereCollided = this->checkWindowCollision();
+    if (whereCollided == this->TOP)
+    {
+        this->y = 0;
+    }
+    else if (whereCollided == this->BOTTOM)
+    {
+        this->y = 600 - this->height;
+    }
 }
 
 void Paddle::draw()
