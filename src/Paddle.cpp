@@ -1,4 +1,5 @@
 #include "headers/Paddle.hpp"
+#include "headers/Window.hpp"
 #include "GL/gl.h"
 
 Paddle::Paddle(int x, int y)
@@ -16,7 +17,7 @@ int Paddle::checkWindowCollision()
         return this->TOP;
     }
 
-    if (this->y > 600 - this->height)
+    if (this->y > Window::HEIGHT - this->height)
     {
         return this->BOTTOM;
     }
@@ -46,7 +47,7 @@ void Paddle::update()
     }
     else if (whereCollided == this->BOTTOM)
     {
-        this->y = 600 - this->height;
+        this->y = Window::HEIGHT - this->height;
     }
 }
 

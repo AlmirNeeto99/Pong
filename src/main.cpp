@@ -3,6 +3,7 @@
 #include "headers/Ball.hpp"
 #include "headers/Paddle.hpp"
 #include "headers/events/KeyEvent.hpp"
+#include "headers/Window.hpp"
 // #include "glm/glm.hpp"
 // #include <glm/gtc/matrix_transform.hpp>
 // #include <glm/gtc/type_ptr.hpp>
@@ -42,7 +43,7 @@ int main(int argc, char const *argv[])
         return -1;
     }
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-    GLFWwindow *window = glfwCreateWindow(1000, 600, "Pong", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(Window::WIDTH, Window::HEIGHT, "Pong", NULL, NULL);
     if (window == NULL)
     {
         printf("Failed to create window\n");
@@ -50,12 +51,12 @@ int main(int argc, char const *argv[])
     }
     glfwMakeContextCurrent(window);
 
-    configureView(1000, 600);
+    configureView(Window::WIDTH, Window::HEIGHT);
     /* Callbacks */
     glfwSetKeyCallback(window, handle_key);
     /* Callbacks */
 
-    Ball ball = Ball(500, 300, 10);
+    Ball ball = Ball(Window::WIDTH / 2, Window::HEIGHT / 2, 10);
     Paddle paddleLeft = Paddle(30, 200);
     Paddle paddleRight = Paddle(950, 200);
     while (!glfwWindowShouldClose(window))
